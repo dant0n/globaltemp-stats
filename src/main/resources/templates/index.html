@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Global Temp Statistics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold" th:text="${currentTemp}"></h1>
+            <p class="col-md-8 fs-4">Current global mean temp</p>
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>Temp</th>
+        </tr>
+        <tr th:each="stat: ${tempStats}">
+            <td th:text="${stat.getRecordedDate()}"></td>
+            <td th:text="${stat.getMeanTemp()}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
